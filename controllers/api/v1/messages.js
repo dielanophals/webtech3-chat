@@ -8,23 +8,35 @@ const messageSchema = new Schema({
 const Message = mongoose.model("Message", messageSchema);
 
 const getAll =  (req, res)=>{
-    res.json({
-        "status": "succes",
-        "data":{
-            "message":{
-                "text": "jowwkes",
-            }
+    Message.find({"user":"Aqsa"}, (err, doc)=>{
+        if(!err){
+            res.json({
+                "status": "succes",
+                "data": {
+                    "messages": doc
+                }
+            });
         }
-    });
+    })
 }
+    
 
 const create = (req, res)=>{
-    res.json({
-        "status": "succes",
-        "data": {
-            "messages": []
+    let message = new Message();
+    message.text="Bak voor mij pannenkoeken aub",
+    message.user="Aqsa",
+    message.completed= false;
+    message.save((err, doc)=> {
+        if(!err){
+            res.json({
+                "status": "succes",
+                "data": {
+                    "messages": doc
+                }
+            });
         }
     });
+    
 }
 
 module.exports.getAll = getAll;

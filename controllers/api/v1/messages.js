@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const messageSchema = new Schema({
-    text: String,
+    text: {
+        type: String,
+        required: true
+    },
     user: String,
     completed: Boolean
 });
@@ -27,6 +30,12 @@ const create = (req, res)=>{
     message.user="Aqsa",
     message.completed= false;
     message.save((err, doc)=> {
+        if(err){
+            res.json({
+                "status": "error",
+                "message": "echt om te wenen dit"
+            });
+        }
         if(!err){
             res.json({
                 "status": "succes",

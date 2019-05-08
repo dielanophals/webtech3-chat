@@ -1,15 +1,4 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-const messageSchema = new Schema({
-    text: {
-        type: String,
-        required: true
-    },
-    user: String,
-    completed: Boolean
-});
-const Message = mongoose.model("Message", messageSchema);
-
+const Message = require('../../../models/Message');
 const getAll =  (req, res)=>{
     Message.find({"user":"Aqsa"}, (err, doc)=>{
         if(!err){
@@ -26,9 +15,10 @@ const getAll =  (req, res)=>{
 
 const create = (req, res)=>{
     let message = new Message();
-    message.text="Bak voor mij pannenkoeken aub",
-    message.user="Aqsa",
-    message.completed= false;
+    console.log(req.body);
+    message.text= req.body.text,
+    message.user= req.body.user,
+    message.completed= req.body.completed;
     message.save((err, doc)=> {
         if(err){
             res.json({

@@ -18,5 +18,6 @@ router.get("/", (req, res)=>{
         "data": {
             "messages": []
         }
-    })
-})
+    });
+});
+module.exports= router;

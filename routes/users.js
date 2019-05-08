@@ -13,8 +13,6 @@ router.get('/', function(req, res, next) {
 //wachtwoord uit request halen
 //bycrypt
 //databank
-router.post('/signup', (req,res, next)=>{
-
-});
+router.post('/signup', authController.signup);
 //router.post('/login',authController.login)
 module.exports = router;

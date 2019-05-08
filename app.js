@@ -9,7 +9,7 @@ var apiMessageRouter = require("./routes/api/v1/messages");
 
 const mongoose = require('mongoose');
 mongoose.set('useCreateIndex', true);
-mongoose.connect('mongodb://localhost:27017/todos', {useNewUrlParser: true});
+mongoose.connect('mongodb://localhost:27017/messages', {useNewUrlParser: true});
 
 var app = express();
 

@@ -4,9 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var indexRouter = require('./routes/index');
-const apiMessageRouter = require('./routes/api/v1/messages');
-
-
+var usersRouter = require('./routes/users');
+var apiMessageRouter = require("./routes/api/v1/messages");
 
 const mongoose = require('mongoose');
 mongoose.set('useCreateIndex', true);
@@ -25,6 +24,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/api/v1/messages', apiMessageRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

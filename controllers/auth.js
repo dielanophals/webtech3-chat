@@ -19,21 +19,21 @@ const signup = async (req, res, next)=>{
 
 };
 
-const login = async (req, res, next) =>{
-    //checkt ofdat het passwooord en user overeenkomen
-    const { user } = await User.authenticate()(req.body.username, req.body.password).then(result =>{
+const login = async (req, res, next) => {
+    const user = await User.authenticate()(req.body.username, req.body.password).then(result => {
         res.json({
-            "status": "succes",
+            "status": "success",
             "data": {
-            "user": result
+                "user": result
             }
-        })
-    }).catch(error =>{
+        });
+    }).catch(error => {
         res.json({
-            "status": "error"
+            "status": "error",
+            "message": error
         })
     });
-}
+};
 
 module.exports.signup = signup;
 module.exports.login = login;

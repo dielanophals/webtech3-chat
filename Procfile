@@ -1,1 +1,1 @@
-web: node vieuws/index.pug
+web: node index.pug

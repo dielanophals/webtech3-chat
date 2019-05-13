@@ -1,0 +1,13 @@
+.form{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    height:100vh;
+}
+
+.center{
+    width:500px;
+    background: $white;
+    height:300px;
+    padding:20px;
+}

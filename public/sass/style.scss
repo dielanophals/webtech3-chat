@@ -1,9 +1,16 @@
 @import 'variables';
 @import 'components/reset';
-@import 'components/signup';
+@import 'components/form';
 
 body{
     background: $lightgrey;
+    font-family: 'Lato', sans-serif;
+    color: $grey;
+}
+
+h2{
+    font-size:26px;
+    font-weight: 700;
 }
 
 .hidden{

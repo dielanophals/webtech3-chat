@@ -24,12 +24,9 @@ var btnLogin = document.querySelector(".login button").addEventListener("click",
       return response.json();
     }).then(json => {
       if(json.status === "success"){
-        let feedback = document.querySelector(".alert");
-        feedback.textContent = "login complete!";
-        feedback.classList.remove('hidden');
-
         let token = json.data.token;
         localStorage.setItem("token", token);
+        window.location.href = "chat.html";
       }else{
         let feedback = document.querySelector('.alert');
         feedback.textContent = "Login failed!";

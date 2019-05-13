@@ -1,7 +1,16 @@
 var btnLogin = document.querySelector(".login button").addEventListener("click", () => {
     let username = document.querySelector("#email").value;
     let password = document.querySelector("#password").value;
-  
+
+    if(username === ""){
+      let feedback = document.querySelector(".alert");
+      feedback.textContent = "Enter an email!";
+      feedback.classList.remove('hidden');
+  }else if(password === ""){
+      let feedback = document.querySelector(".alert");
+      feedback.textContent = "Enter a password!";
+      feedback.classList.remove('hidden');
+  }else{
     fetch('http://localhost:3000/users/login', {
       method: "post",
       headers: {
@@ -24,5 +33,6 @@ var btnLogin = document.querySelector(".login button").addEventListener("click",
         feedback.classList.remove('hidden');
       }
     })
+  }  
   })
   

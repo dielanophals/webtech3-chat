@@ -1,6 +1,6 @@
 const Message = require('../../../models/Message');
 const getAll =  (req, res)=>{
-    Message.find({"user":"Aqsa"}, (err, doc)=>{
+    Message.find({"user":req.user._id}, (err, doc)=>{
         if(!err){
             res.json({
                 "status": "succes",

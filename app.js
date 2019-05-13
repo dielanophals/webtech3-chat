@@ -7,6 +7,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var apiMessageRouter = require("./routes/api/v1/messages");
 const cors = require('cors');
+const passport = require('./passport/passport');
+
 const mongoose = require('mongoose');
 mongoose.set('useCreateIndex', true);
 require('dotenv').config();
@@ -28,7 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/api/v1/messages', apiMessageRouter);
+app.use('/api/v1/messages', passport.authenticate('jwt', { session: false }), apiMessageRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -19,7 +19,7 @@ fetch('http://localhost:3000/api/v1/users', {
   return result.json();
 }).then(json => {
   json.data.users.forEach(user => {
-    var users = `<div>${user.username}</div>`;
+    var users = `<div>${user.firstname} ${user.lastname}</div>`;
     document.querySelector(".persons").innerHTML += users;
   });
   console.log(json);

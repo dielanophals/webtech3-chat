@@ -1,8 +1,10 @@
 var btnSignup = document.querySelector(".signup button").addEventListener("click", function(e) {
-    let username = document.querySelector('#email').value;
+    let email = document.querySelector('#email').value;
+    let firstname = document.querySelector('#firstname').value;
+    let lastname = document.querySelector('#lastname').value;
     let password = document.querySelector('#password').value;
 
-    if(username === ""){
+    if(email === ""){
         let feedback = document.querySelector(".alert");
         feedback.textContent = "Enter an email!";
         feedback.classList.remove('hidden');
@@ -17,7 +19,9 @@ var btnSignup = document.querySelector(".signup button").addEventListener("click
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            "username": username,
+            "email": email,
+            "firstname": firstname,
+            "lastname": lastname,
             "password": password
         })
     }).then(response =>{

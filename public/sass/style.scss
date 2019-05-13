@@ -9,12 +9,12 @@
 
 body{
     background: $lightgrey;
-    font-family: 'Lato', sans-serif;
+    font-family: $font;
     color: $grey;
 }
 
 h2{
-    font-size:32px;
+    font-size:26px;
     font-weight: 700;
 }
 

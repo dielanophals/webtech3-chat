@@ -5,6 +5,7 @@
         background: $white;
         width:22%;
         height:100vh;
+        padding:25px 20px;
     }
 
     .chat{
@@ -12,5 +13,25 @@
         width:78%;
         height:100vh;
         box-shadow: $boxshadow;
+        padding:25px 20px;
+        display: flex;
+        align-items: flex-end;
+        flex-wrap: wrap;
+
+        .chat--form{
+            width:100%;
+            display: flex;
+            align-items: flex-end;
+
+            textarea{
+                width:90%;
+                resize:none;
+                padding:10px;
+            }
+
+            button{
+                margin-left:20px;
+            }
+        }
     }
 }

@@ -10,15 +10,6 @@
         padding:50px 40px;
         box-shadow: $boxshadow;
         border-radius: 7px;
-
-        input{
-            width:100%;
-            padding:15px;
-            border:none;
-            box-shadow: $boxshadow;
-            border-radius: $radius;
-            margin-top:10px;
-        }
         
         .email, .password{
             margin-top:20px;
@@ -30,3 +21,12 @@
     }
 }
 
+input, textarea{
+    width:100%;
+    padding:15px;
+    border:none;
+    box-shadow: $boxshadow;
+    border-radius: $radius;
+    margin-top:10px;
+    font-family: $font;
+}

@@ -1,5 +1,10 @@
 @import 'variables';
+@import 'components/reset';
 @import 'components/signup';
+
+body{
+    background: $lightgrey;
+}
 
 .hidden{
     display: none;

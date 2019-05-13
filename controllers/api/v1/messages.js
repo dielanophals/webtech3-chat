@@ -1,6 +1,7 @@
 const Message = require('../../../models/Message');
+
 const getAll =  (req, res)=>{
-    Message.find({"user":req.user._id}, (err, doc)=>{
+    Message.find({"user":req.user._id}, (err, doc) => {
         if(!err){
             res.json({
                 "status": "succes",
@@ -34,7 +35,6 @@ const create = (req, res)=>{
             });
         }
     });
-    
 }
 
 module.exports.getAll = getAll;

@@ -1,4 +1,4 @@
-fetch('http://localhost:3000/api/v1/todos', {
+fetch('http://localhost:3000/api/v1/messages', {
     headers: {
       'Authorization': 'Bearer ' + localStorage.getItem('token')
     },

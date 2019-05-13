@@ -1,7 +1,6 @@
 const User = require('../models/User');
 
-
-const signup = async (req, res, next)=>{
+const signup = async (req, res, next) => {
     console.log(req.body);
     let username = req.body.username; //kan ook uit UI ipv postman
     let password = req.body.password;
@@ -16,12 +15,17 @@ const signup = async (req, res, next)=>{
             "status": "error"
         })
     });
-
 };
 
 const login = async (req, res, next) => {
     const user = await User.authenticate()(req.body.username, req.body.password).then(result => {
-        res.json({
+        if(!result.user){
+            return res.json({
+                "status": "failed",
+                "message": "Login failed"
+            })
+        }
+        return res.json({
             "status": "success",
             "data": {
                 "user": result

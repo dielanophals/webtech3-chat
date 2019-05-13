@@ -19,7 +19,13 @@ const signup = async (req, res, next) => {
 
 const login = async (req, res, next) => {
     const user = await User.authenticate()(req.body.username, req.body.password).then(result => {
-        res.json({
+        if(!result.user){
+            return res.json({
+                "status": "failed",
+                "message": "Login failed"
+            })
+        }
+        return res.json({
             "status": "success",
             "data": {
                 "user": result

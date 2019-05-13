@@ -1,6 +1,5 @@
 const User = require('../models/User');
 
-
 const signup = async (req, res, next)=>{
     console.log(req.body);
     let username = req.body.username; //kan ook uit UI ipv postman

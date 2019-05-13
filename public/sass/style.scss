@@ -2,6 +2,10 @@
 @import 'components/reset';
 @import 'components/form';
 
+*{
+    box-sizing: border-box;
+}
+
 body{
     background: $lightgrey;
     font-family: 'Lato', sans-serif;
@@ -9,10 +13,19 @@ body{
 }
 
 h2{
-    font-size:26px;
+    font-size:32px;
     font-weight: 700;
 }
 
 .hidden{
     display: none;
+}
+
+.btn{
+    background: $blue;
+    border:none;
+    padding: 10px 20px;
+    border-radius: $radius;
+    color:white;
+    font-size: 16px;
 }

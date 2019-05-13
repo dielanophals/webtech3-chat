@@ -3,11 +3,30 @@
     justify-content: center;
     align-items:center;
     height:100vh;
+
+    .center{
+        width:550px;
+        background: $white;
+        padding:50px 40px;
+        box-shadow: $boxshadow;
+        border-radius: 7px;
+
+        input{
+            width:100%;
+            padding:15px;
+            border:none;
+            box-shadow: $boxshadow;
+            border-radius: $radius;
+            margin-top:10px;
+        }
+        
+        .email, .password{
+            margin-top:20px;
+        }
+        
+        button{
+            margin-top: 20px;
+        }
+    }
 }
 
-.center{
-    width:500px;
-    background: $white;
-    height:300px;
-    padding:20px;
-}

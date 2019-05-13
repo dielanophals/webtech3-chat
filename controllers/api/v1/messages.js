@@ -11,7 +11,6 @@ const getAll =  (req, res)=>{
         }
     })
 }
-    
 
 const create = (req, res)=>{
     let message = new Message();

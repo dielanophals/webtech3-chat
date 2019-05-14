@@ -46,7 +46,8 @@ document.querySelector(".imdchat").addEventListener("click", e => {
           console.log(json);
         }).catch(err => {
           console.log("Go away")
-        })
+          window.location.href = "chat.html";
+      })
 
         document.querySelector('.chat--form').classList.remove('hidden');
     }

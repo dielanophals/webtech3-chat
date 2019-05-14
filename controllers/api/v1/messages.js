@@ -1,13 +1,13 @@
 const Message = require('../../../models/Message');
 
-const getMessages = (req, res) => {
+const getAll = (req, res) => {
     let receiver = req.params.id;
 
     Message.find({
         $or: [
             {
                 $or: [{
-                    "sender": req.user._id,
+                    "sender":req.user._id,
                     "receiver": receiver
                 }]
             },{
@@ -17,19 +17,6 @@ const getMessages = (req, res) => {
                 }]
             }
         ]}, (err, doc) => {
-        if(!err){
-            res.json({
-                "status": "succes",
-                "data": {
-                    "messages": doc
-                }
-            });
-        }
-    })
-}
-
-const getAllMessages = (req, res) => {
-    Message.find((err, doc) => {
         if(!err){
             res.json({
                 "status": "succes",
@@ -65,6 +52,5 @@ const create = (req, res) => {
     });
 }
 
-module.exports.getMessages = getMessages;
-module.exports.getAllMessages = getAllMessages;
+module.exports.getAll = getAll;
 module.exports.create = create;

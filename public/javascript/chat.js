@@ -19,34 +19,9 @@ fetch('http://localhost:3000/api/v1/users', {
 })
 
 document.querySelector(".imdchat").addEventListener("click", e => {
-    if(e.target.classList.contains("group")){
-      fetch('http://localhost:3000/api/v1/messages/', {
-        headers: {
-          'Authorization': 'Bearer ' + localStorage.getItem('token')
-        }
-      }).then(result => {
-        return result.json();
-      }).then(json => {
-        document.querySelector(".messages").innerHTML = "";
-        json.data.messages.forEach(message => {
-        if(message.sender === localStorage.getItem('receiver')){
-              var messages = `
-              <div class="wrapper left"><span class="message" data-id="${message._id}">${message.text}</span></div>
-            `;
-            }else{
-              var messages = `
-              <div class="wrapper"><span class="message" data-id="${message._id}">${message.text}</span></div>
-            `;
-            }
-            document.querySelector(".messages").innerHTML += messages;    
-        });
-        console.log(json);
-      }).catch(err => {
-        console.log("Go away")
-        window.location.href = "chat.html";
-    })
-    }else if(e.target.classList.contains("user")){
+    if (e.target.classList.contains("user")) {
         let receiver = e.target.getAttribute("data-id");
+        alert(receiver)
         localStorage.setItem("receiver", receiver);
 
         fetch('http://localhost:3000/api/v1/messages/' + receiver, {

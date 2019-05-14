@@ -29,6 +29,7 @@ var btnSignup = document.querySelector(".signup button").addEventListener("click
     }).then(json => {
         if(json.status == "succes"){
             let token = json.data.token;
+            localStorage.setItem("firstname", firstname);
             localStorage.setItem("token", token);
             window.location.href = "chat.html";
         }

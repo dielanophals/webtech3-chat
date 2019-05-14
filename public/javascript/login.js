@@ -24,6 +24,7 @@ var btnLogin = document.querySelector(".login button").addEventListener("click",
       return response.json();
     }).then(json => {
       if(json.status === "success"){
+        localStorage.setItem("email", username);
         let token = json.data.token;
         localStorage.setItem("token", token);
         window.location.href = "chat.html";

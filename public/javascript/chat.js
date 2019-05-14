@@ -11,18 +11,19 @@ fetch('http://localhost:3000/api/v1/messages', {
 })
 
 fetch('http://localhost:3000/api/v1/users', {
-  method: "get",
   headers: {
-    'Content-Type': 'application/json'
-  }
+    'Authorization': 'Bearer ' + localStorage.getItem('token')
+  },
 }).then(result => {
   return result.json();
 }).then(json => {
   json.data.users.forEach(user => {
-    var users = `<div>${user.firstname} ${user.lastname}</div>`;
-    document.querySelector(".persons").innerHTML += users;
+    if(user.username !== localStorage.getItem('email')){
+      var users = `<div>${user.firstname} ${user.lastname}</div>`;
+      document.querySelector(".persons").innerHTML += users;    
+  }
   });
   console.log(json);
 }).catch(err => {
-  console.log("Go away")
+  window.location.href = "login.html";
 })

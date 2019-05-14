@@ -31,7 +31,8 @@ document.querySelector(".imdchat").addEventListener("click", e => {
         }).then(json => {
           document.querySelector(".messages").innerHTML = "";
           json.data.messages.forEach(message => {
-              if(message.sender === localStorage.getItem('receiver')){
+          localStorage.setItem("receiver", receiver);
+          if(message.sender === localStorage.getItem('receiver')){
                 var messages = `
                 <div class="wrapper left"><span class="message" data-id="${message._id}">${message.text}</span></div>
               `;
@@ -42,7 +43,6 @@ document.querySelector(".imdchat").addEventListener("click", e => {
               }
               document.querySelector(".messages").innerHTML += messages;    
           });
-          localStorage.setItem("receiver", receiver);
           console.log(json);
         }).catch(err => {
           console.log("Go away")

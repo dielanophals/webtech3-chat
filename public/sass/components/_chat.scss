@@ -18,6 +18,10 @@
         align-items: flex-end;
         flex-wrap: wrap;
 
+        .messages{
+            width:100%;
+        }
+
         .chat--form{
             width:100%;
             display: flex;

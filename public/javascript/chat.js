@@ -32,14 +32,17 @@ document.querySelector(".imdchat").addEventListener("click", e => {
           document.querySelector(".messages").innerHTML = "";
           json.data.messages.forEach(message => {
               var messages = `
-                <span class="message" data-id="${message._id}">${message.text}</span>
+                <span class="message left" data-id="${message._id}">${message.text}</span>
               `;
               document.querySelector(".messages").innerHTML += messages;    
           });
+          localStorage.setItem("receiver", receiver);
           console.log(json);
         }).catch(err => {
           console.log("Go away")
         })
+
+        document.querySelector('.chat--form').classList.remove('hidden');
     }
 });
 
@@ -55,7 +58,8 @@ input.addEventListener("keyup", e => {
         'Authorization': 'Bearer ' + localStorage.getItem('token')
       },
       body: JSON.stringify({
-        "text": text
+        "text": text,
+        "receiver": localStorage.getItem('receiver')
       })
     }).then(result => {
       return result.json();

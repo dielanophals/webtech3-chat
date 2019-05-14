@@ -4,9 +4,19 @@ const getAll = (req, res) => {
     let receiver = req.params.id;
 
     Message.find({
-        "sender":req.user._id,
-        "receiver": receiver
-    }, (err, doc) => {
+        $or: [
+            {
+                $or: [{
+                    "sender":req.user._id,
+                    "receiver": receiver
+                }]
+            },{
+                $or: [{
+                    "sender":receiver,
+                    "receiver": req.user._id
+                }]
+            }
+        ]}, (err, doc) => {
         if(!err){
             res.json({
                 "status": "succes",
@@ -23,7 +33,7 @@ const create = (req, res) => {
     console.log(req.body);
     message.text= req.body.text,
     message.sender= req.user._id,
-    message.receiver= "5cd9f9c07addb75fc2cd177f";
+    message.receiver= req.body.receiver;
     message.save((err, doc)=> {
         if(err){
             res.json({

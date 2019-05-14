@@ -97,6 +97,9 @@ input, textarea {
   align-items: flex-end;
   flex-wrap: wrap;
 }
+.imdchat .chat .messages {
+  width: 100%;
+}
 .imdchat .chat .chat--form {
   width: 100%;
   display: flex;
@@ -127,7 +130,7 @@ h2 {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .btn {

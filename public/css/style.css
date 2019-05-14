@@ -123,7 +123,7 @@ input, textarea {
   border-radius: 10px;
   padding: 10px 15px;
   background: #F2F4F5;
-  margin: 10px 0;
+  margin: 10px 20px;
 }
 .imdchat .chat .messages .left {
   justify-content: flex-start;

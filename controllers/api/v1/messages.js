@@ -1,7 +1,12 @@
 const Message = require('../../../models/Message');
 
-const getAll = (req, res)=>{
-    Message.find({"sender":req.user._id, "receiver": "5cd9f9c07addb75fc2cd177f"}, (err, doc) => {
+const getAll = (req, res) => {
+    let receiver = req.params.id;
+
+    Message.find({
+        "sender":req.user._id,
+        "receiver": receiver
+    }, (err, doc) => {
         if(!err){
             res.json({
                 "status": "succes",
@@ -13,7 +18,7 @@ const getAll = (req, res)=>{
     })
 }
 
-const create = (req, res)=>{
+const create = (req, res) => {
     let message = new Message();
     console.log(req.body);
     message.text= req.body.text,

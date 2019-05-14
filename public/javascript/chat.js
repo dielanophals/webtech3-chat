@@ -1,15 +1,3 @@
-fetch('http://localhost:3000/api/v1/messages', {
-    headers: {
-      'Authorization': 'Bearer ' + localStorage.getItem('token')
-    },
-}).then(result => {
-  return result.json();
-}).then(json => {
-  console.log(json);
-}).catch(err => {
-  console.log("Go away")
-})
-
 fetch('http://localhost:3000/api/v1/users', {
   headers: {
     'Authorization': 'Bearer ' + localStorage.getItem('token')
@@ -32,7 +20,9 @@ fetch('http://localhost:3000/api/v1/users', {
 
 document.querySelector(".imdchat").addEventListener("click", e => {
     if (e.target.classList.contains("user")) {
-        fetch('http://localhost:3000/api/v1/messages', {
+        let receiver = e.target.getAttribute("data-id");
+
+        fetch('http://localhost:3000/api/v1/messages/' + receiver, {
           headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('token')
           }

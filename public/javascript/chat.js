@@ -21,6 +21,8 @@ fetch('http://localhost:3000/api/v1/users', {
 document.querySelector(".imdchat").addEventListener("click", e => {
     if (e.target.classList.contains("user")) {
         let receiver = e.target.getAttribute("data-id");
+        alert(receiver)
+        localStorage.setItem("receiver", receiver);
 
         fetch('http://localhost:3000/api/v1/messages/' + receiver, {
           headers: {
@@ -31,7 +33,6 @@ document.querySelector(".imdchat").addEventListener("click", e => {
         }).then(json => {
           document.querySelector(".messages").innerHTML = "";
           json.data.messages.forEach(message => {
-          localStorage.setItem("receiver", receiver);
           if(message.sender === localStorage.getItem('receiver')){
                 var messages = `
                 <div class="wrapper left"><span class="message" data-id="${message._id}">${message.text}</span></div>
@@ -57,6 +58,7 @@ let input = document.querySelector("#message");
 input.addEventListener("keyup", e => {
   if(e.keyCode === 13){
     let text = input.value;
+    input.value = ""
 
     fetch('http://localhost:3000/api/v1/messages/', {
       method: 'post',

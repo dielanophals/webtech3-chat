@@ -1,8 +1,23 @@
 const Message = require('../../../models/Message');
 
+const getGroup = (req, res) => {
+    let receiver = "group";
+    Message.find({
+            "receiver": receiver
+        }, (err, doc) => {
+        if(!err){
+            res.json({
+                "status": "succes",
+                "data": {
+                    "messages": doc
+                }
+            });
+        }
+    })
+}
+
 const getAll = (req, res) => {
     let receiver = req.params.id;
-
     Message.find({
         $or: [
             {
@@ -52,5 +67,6 @@ const create = (req, res) => {
     });
 }
 
+module.exports.getGroup = getGroup;
 module.exports.getAll = getAll;
 module.exports.create = create;

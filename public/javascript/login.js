@@ -33,6 +33,7 @@ var btnLogin = document.querySelector(".login button").addEventListener("click",
         feedback.textContent = "Login failed!";
         feedback.classList.remove('hidden');
       }
+      console.log(json)
     })
   }  
   })

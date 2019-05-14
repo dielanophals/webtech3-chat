@@ -23,12 +23,24 @@
             display: flex;
             flex-wrap: wrap;
 
-            .message{
+            .wrapper{
                 width:100%;
+                display: flex;
+                justify-content: flex-end;
+            }
+
+            .message{
+                border-radius: $radius;
+                padding: 5px 10px;
             }
 
             .left{
-                background:$blue;
+                justify-content: flex-start;
+
+                .message{
+                    background:$blue;
+                    color:$white;
+                }
             }
         }
 

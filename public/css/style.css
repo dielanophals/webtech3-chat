@@ -80,6 +80,7 @@ input, textarea {
 
 .imdchat {
   display: flex;
+  width: 100%;
 }
 .imdchat .persons {
   background: #F2F4F5;
@@ -105,14 +106,13 @@ input, textarea {
   height: 100vh;
   box-shadow: 0px 0px 10px 0px rgba(51, 51, 51, 0.2);
   padding: 25px 20px;
-  display: flex;
-  align-items: flex-end;
-  flex-wrap: wrap;
 }
 .imdchat .chat .messages {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
+  width: 74%;
+  margin-top: 20px;
+  position: fixed;
+  overflow-y: scroll;
+  height: 80vh;
 }
 .imdchat .chat .messages .wrapper {
   width: 100%;
@@ -121,7 +121,7 @@ input, textarea {
 }
 .imdchat .chat .messages .message {
   border-radius: 10px;
-  padding: 5px 10px;
+  padding: 10px 15px;
   background: #F2F4F5;
   margin: 10px 0;
 }
@@ -133,14 +133,17 @@ input, textarea {
   color: white;
 }
 .imdchat .chat .chat--form {
-  width: 100%;
+  width: 75%;
+  position: fixed;
+  bottom: 20px;
   display: flex;
   align-items: flex-end;
 }
-.imdchat .chat .chat--form textarea {
+.imdchat .chat .chat--form input {
   width: 90%;
   resize: none;
   padding: 10px;
+  font-size: 16px;
 }
 .imdchat .chat .chat--form button {
   margin-left: 20px;

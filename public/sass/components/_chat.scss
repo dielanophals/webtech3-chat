@@ -1,5 +1,6 @@
 .imdchat{
     display: flex;
+    width:100%;
 
     .persons{
         background: $lightgrey;
@@ -27,14 +28,13 @@
         height:100vh;
         box-shadow: $boxshadow;
         padding:25px 20px;
-        display: flex;
-        align-items: flex-end;
-        flex-wrap: wrap;
 
         .messages{
-            width:100%;
-            display: flex;
-            flex-wrap: wrap;
+            width:74%;
+            margin-top:20px;
+            position: fixed;
+            overflow-y: scroll;
+            height:80vh;
 
             .wrapper{
                 width:100%;
@@ -44,7 +44,7 @@
 
             .message{
                 border-radius: $radius;
-                padding: 5px 10px;
+                padding: 10px 15px;
                 background:$lightgrey;
                 margin: 10px 0;
             }
@@ -60,14 +60,17 @@
         }
 
         .chat--form{
-            width:100%;
+            width:75%;
+            position: fixed;
+            bottom:20px;
             display: flex;
             align-items: flex-end;
 
-            textarea{
+            input{
                 width:90%;
                 resize:none;
                 padding:10px;
+                font-size:16px;
             }
 
             button{

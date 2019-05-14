@@ -32,21 +32,16 @@ fetch('http://localhost:3000/api/v1/users', {
 
 document.querySelector(".imdchat").addEventListener("click", e => {
     if (e.target.classList.contains("user")) {
-        let userId = e.target.getAttribute("data-id");
-
-        fetch('http://localhost:3000/api/v1/messages/' + userId, {
-            method: "get",
-            'headers': {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem('token')
-            }
-        })
-        .then(result => {
-            return result.json();
+        fetch('http://localhost:3000/api/v1/messages', {
+          headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+          }
+        }).then(result => {
+          return result.json();
         }).then(json => {
-            console.log(json);
+          console.log(json);
         }).catch(err => {
-            console.log(err)
+          console.log("Go away")
         })
     }
 });

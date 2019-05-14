@@ -31,9 +31,15 @@ document.querySelector(".imdchat").addEventListener("click", e => {
         }).then(json => {
           document.querySelector(".messages").innerHTML = "";
           json.data.messages.forEach(message => {
-              var messages = `
+              if(message.sender === localStorage.getItem('receiver')){
+                var messages = `
                 <span class="message left" data-id="${message._id}">${message.text}</span>
               `;
+              }else{
+                var messages = `
+                <span class="message" data-id="${message._id}">${message.text}</span>
+              `;
+              }
               document.querySelector(".messages").innerHTML += messages;    
           });
           localStorage.setItem("receiver", receiver);

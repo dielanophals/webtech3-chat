@@ -99,6 +99,14 @@ input, textarea {
 }
 .imdchat .chat .messages {
   width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.imdchat .chat .messages .message {
+  width: 100%;
+}
+.imdchat .chat .messages .left {
+  background: #5584FD;
 }
 .imdchat .chat .chat--form {
   width: 100%;

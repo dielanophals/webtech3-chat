@@ -20,6 +20,16 @@
 
         .messages{
             width:100%;
+            display: flex;
+            flex-wrap: wrap;
+
+            .message{
+                width:100%;
+            }
+
+            .left{
+                background:$blue;
+            }
         }
 
         .chat--form{

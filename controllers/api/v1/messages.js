@@ -17,8 +17,8 @@ const create = (req, res)=>{
     let message = new Message();
     console.log(req.body);
     message.text= req.body.text,
-    message.user= req.body.user,
-    message.completed= req.body.completed;
+    message.sender= req.user._id,
+    message.receiver= "5cd9f9c07addb75fc2cd177f";
     message.save((err, doc)=> {
         if(err){
             res.json({

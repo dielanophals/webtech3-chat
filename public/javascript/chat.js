@@ -50,3 +50,28 @@ document.querySelector(".imdchat").addEventListener("click", e => {
         })
     }
 });
+
+let input = document.querySelector("#message");
+input.addEventListener("keyup", e => {
+  if(e.keyCode === 13){
+    let text = input.value;
+
+    fetch('http://localhost:3000/api/v1/messages', {
+      method: 'post',
+      'headers':{
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      },
+      body: JSON.stringify({
+        "text": text
+      })
+    }).then(result => {
+      return result.json();
+    }).then(json => {
+      console.log(json)
+    }).catch(err => {
+      console.log(err);
+    })
+  }
+  e.preventDefault();
+})

@@ -11,7 +11,7 @@ fetch('http://localhost:3000/api/v1/users', {
         <div class="user" data-id="${user._id}">${user.firstname} ${user.lastname}</div>
       `;
       document.querySelector(".persons").innerHTML += users;    
-  }
+    }
   });
   console.log(json);
 }).catch(err => {
@@ -29,6 +29,13 @@ document.querySelector(".imdchat").addEventListener("click", e => {
         }).then(result => {
           return result.json();
         }).then(json => {
+          document.querySelector(".messages").innerHTML = "";
+          json.data.messages.forEach(message => {
+              var messages = `
+                <span class="message" data-id="${message._id}">${message.text}</span>
+              `;
+              document.querySelector(".messages").innerHTML += messages;    
+          });
           console.log(json);
         }).catch(err => {
           console.log("Go away")
@@ -41,7 +48,7 @@ input.addEventListener("keyup", e => {
   if(e.keyCode === 13){
     let text = input.value;
 
-    fetch('http://localhost:3000/api/v1/messages', {
+    fetch('http://localhost:3000/api/v1/messages/', {
       method: 'post',
       'headers':{
         'Content-Type': 'application/json',

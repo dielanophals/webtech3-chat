@@ -14,12 +14,12 @@ const passport = require('./passport/passport');
 const mongoose = require('mongoose');
 mongoose.set('useCreateIndex', true);
 require('dotenv').config();
-mongoose.connect(config.get('Database.conn'), {useNewUrlParser: true});
+mongoose.connect(process.env.dbconn || config.get('Database.conn'), {useNewUrlParser: true});
 console.log(config.get('Database'));
 
 var app = express();
 
-// view engine setup
+// view engine setup   .
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 

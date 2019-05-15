@@ -8,12 +8,14 @@ var usersRouter = require('./routes/users');
 var apiMessageRouter = require("./routes/api/v1/messages");
 var apiUserRouter = require("./routes/api/v1/users");
 const cors = require('cors');
+const config = require('config');
 const passport = require('./passport/passport');
 
 const mongoose = require('mongoose');
 mongoose.set('useCreateIndex', true);
 require('dotenv').config();
-mongoose.connect('mongodb://localhost:27017/messages', {useNewUrlParser: true});
+mongoose.connect(config.get('Database.conn'), {useNewUrlParser: true});
+console.log(config.get('Database'));
 
 var app = express();
 

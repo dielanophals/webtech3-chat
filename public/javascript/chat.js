@@ -1,4 +1,4 @@
-const base_url = "https://todo-nodejs-goodbytes.herokuapp.com";
+const base_url = "http://localhost:3000";
 
 // PRIMUS LIVE
 primus = Primus.connect("http://localhost:3000", {
@@ -19,7 +19,7 @@ if (!localStorage.getItem("token")) {
     window.location.href = "login.html";
 }
 
-fetch(base_url, "/api/v1/messages", {
+fetch("http://localhost:3000/api/v1/users", {
   headers: {
     'Authorization': 'Bearer ' + localStorage.getItem('token')
   },

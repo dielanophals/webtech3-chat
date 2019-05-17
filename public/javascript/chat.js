@@ -1,4 +1,4 @@
-const base_url = "http://localhost:3000";
+
 
 // PRIMUS LIVE
 primus = Primus.connect("http://localhost:3000", {
@@ -12,14 +12,18 @@ primus = Primus.connect("http://localhost:3000", {
 });
 
 
-
+primus.on('data', (json)=>{
+  if(json.action === "addMessage"){
+    appendMessage(json.data);
+  }
+})
 
 /* redirect if not logged in */
 if (!localStorage.getItem("token")) {
     window.location.href = "login.html";
 }
 
-fetch(base_url + "/api/v1/users", {
+fetch("http://localhost:3000/api/v1/users", {
   headers: {
     'Authorization': 'Bearer ' + localStorage.getItem('token')
   },
@@ -29,7 +33,7 @@ fetch(base_url + "/api/v1/users", {
   json.data.users.forEach(user => {
     if(user.username !== localStorage.getItem('email')){
       var users = `
-        <div class="user" data-id="${user._id}">${user.firstname} ${user.lastname}</div>
+        <div class="user" data-id="${user._id}">${user.username}</div>
       `;
       document.querySelector(".persons").innerHTML += users;    
     }else{
@@ -107,11 +111,20 @@ document.querySelector(".imdchat").addEventListener("click", e => {
     }
 });
 
+//append a message to the dom
+let appendMessage = (json) => {
+  let messages = `
+<div class="wrapper"><span class="message" data-id="${json.data.messages._id}">${json.data.messages.text}</span></div>
+`;
+input.value = "";
+input.focus();
+document.querySelector(".messages").innerHTML += messages;
+}
+//add a message on enter
 let input = document.querySelector("#message");
 input.addEventListener("keyup", e => {
   if(e.keyCode === 13){
     let text = input.value;
-    input.value = ""
 
     fetch('http://localhost:3000/api/v1/messages/', {
       method: 'post',
@@ -127,10 +140,16 @@ input.addEventListener("keyup", e => {
       return result.json();
     }).then(json => {
       console.log(json)
-      let messages = `
-        <div class="wrapper"><span class="message" data-id="${json.data.messages._id}">${json.data.messages.text}</span></div>
-      `;
-    document.querySelector(".messages").innerHTML += messages;
+      input.value = "";
+      input.focus();
+
+      primus.write({
+        "action": "addMessage",
+        "data": json
+      });
+
+      //appendMessage(json);
+
     }).catch(err => {
       console.log(err);
     })

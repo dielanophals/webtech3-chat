@@ -1,7 +1,7 @@
-const base_url = "https://chatbot-dielanophals.herokuapp.com";
+
 
 // PRIMUS LIVE
-primus = Primus.connect(base_url, {
+primus = Primus.connect("http://localhost:3000", {
     reconnect: {
         max: Infinity // Number: The max delay before we try to reconnect.
             ,
@@ -23,7 +23,7 @@ if (!localStorage.getItem("token")) {
     window.location.href = "login.html";
 }
 
-fetch(base_url + "/api/v1/users", {
+fetch("http://localhost:3000/api/v1/users", {
   headers: {
     'Authorization': 'Bearer ' + localStorage.getItem('token')
   },
@@ -51,7 +51,7 @@ document.querySelector(".imdchat").addEventListener("click", e => {
 
     localStorage.setItem("receiver", "group");
 
-    fetch(base_url + '/api/v1/messages', {
+    fetch('http://localhost:3000/api/v1/messages', {
       headers: {
         'Authorization': 'Bearer ' + localStorage.getItem('token')
       }
@@ -82,7 +82,7 @@ document.querySelector(".imdchat").addEventListener("click", e => {
         localStorage.setItem("receiver", receiver);
         document.querySelector(".title__user").innerHTML = e.target.innerHTML
 
-        fetch(base_url + '/api/v1/messages/' + receiver, {
+        fetch('http://localhost:3000/api/v1/messages/' + receiver, {
           headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('token')
           }
@@ -126,7 +126,7 @@ input.addEventListener("keyup", e => {
   if(e.keyCode === 13){
     let text = input.value;
 
-    fetch(base_url + '/api/v1/messages/', {
+    fetch('http://localhost:3000/api/v1/messages/', {
       method: 'post',
       'headers':{
         'Content-Type': 'application/json',

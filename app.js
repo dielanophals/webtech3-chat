@@ -33,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+//Webtokens authenticate 
 app.use('/api/v1/messages', passport.authenticate('jwt', { session: false }), apiMessageRouter);
 app.use('/api/v1/users', apiUserRouter);
 

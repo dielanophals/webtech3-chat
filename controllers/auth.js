@@ -15,6 +15,7 @@ const signup = async (req, res, next) => {
         lastname: lastname
     });
     await user.setPassword(password);
+    //sign up webtokens
     await user.save().then(result =>{
         let token = jwt.sign({
             uid: result._id,

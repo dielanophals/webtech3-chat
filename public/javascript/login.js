@@ -1,3 +1,5 @@
+const url = "https://chatbot-dielanophals.herokuapp.com";
+
 var btnLogin = document.querySelector(".login button").addEventListener("click", () => {
     let username = document.querySelector("#email").value;
     let password = document.querySelector("#password").value;
@@ -11,7 +13,7 @@ var btnLogin = document.querySelector(".login button").addEventListener("click",
       feedback.textContent = "Enter a password!";
       feedback.classList.remove('hidden');
   }else{
-    fetch('http://localhost:3000/users/login', {
+    fetch(url + '/users/login', {
       method: "post",
       headers: {
         'Content-Type': 'application/json'

@@ -9,11 +9,12 @@ const browserSync = require('browser-sync').create();
 const imagemin = require('gulp-imagemin');
 
 function sass2css() {
-    return src('./src/sass/app.scss')
+    return src('./sass/style.scss')
+        //geeft het door naar een volgend commando
         .pipe(sass({
             outputStyle: 'compressed'
         }).on('error', sass.logError))
-        .pipe(dest('./dist/css/'))
+        .pipe(dest('./css/'))
         .pipe(browserSync.stream());
 }
 
@@ -25,13 +26,9 @@ function doBrowserSync() {
     });
 }
 
-function optimizeImages() {
-    return src('./src/images/*.*')
-        .pipe(imagemin())
-        .pipe(dest('./dist/images/'));
-}
 
-watch("./src/sass/**/*.scss", parallel(sass2css));
 
-module.exports.images = optimizeImages;
-module.exports.default = parallel(sass2css, doBrowserSync, optimizeImages);
+watch("./sass/**/*.scss", parallel(sass2css));
+
+
+module.exports.default = parallel(sass2css, doBrowserSync);

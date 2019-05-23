@@ -1,6 +1,6 @@
 {
     "Database":{
-        "conn": "mongodb://localhost:27017/messages"
+        "conn": "mongodb+srv://aqsa:LOVEDOGIE@cluster0-rgscd.mongodb.net/test?retryWrites=true"
     }, 
     "jwt":{
         "secret": "MyVerySecretWord"

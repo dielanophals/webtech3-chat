@@ -1,5 +1,8 @@
 {
-     
+     "database":{
+        "conn": "mongodb+srv://aqsa:LOVEDOGIE@cluster0-rgscd.mongodb.net/test?retryWrites=true"
+     },
+
     "jwt":{
         "secret": "MyVerySecretWord"
 }

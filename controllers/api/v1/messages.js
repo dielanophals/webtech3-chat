@@ -68,11 +68,10 @@ const create = (req, res) => {
 }
 
 const removeMessage = (req, res) => {
-    let user = req.user._id;
     let messageId = req.params.id;
+    console.log(messageId);
 
     Todo.findOneAndDelete({
-        user: user,
         _id: messageId
     }).then(result => {
         res.json({

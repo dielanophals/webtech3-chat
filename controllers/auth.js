@@ -21,6 +21,8 @@ const signup = async (req, res, next) => {
             username: result.username
         }, config.get('jwt.secret'));
 
+//webtokens (zodat alleen de geauthenticeerde gebruikers, juiste gebruikers het kunnen zien)
+
         res.json({
             "status": "succes",
             "data": {

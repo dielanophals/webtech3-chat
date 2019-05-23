@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const config = require('config');
+//controllers zorgen ervoor dat we de route kunnen matchen met de functie.
 
 const signup = async (req, res, next) => {
     console.log(req.body);

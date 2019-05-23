@@ -1,3 +1,4 @@
+//datastructuur (MVC structuur => moduls, views en controllers)
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const messageSchema = new Schema({

@@ -67,6 +67,24 @@ const create = (req, res) => {
     });
 }
 
+const removeMessage = (req, res) => {
+    let user = req.user._id;
+    let messageId = req.params.id;
+
+    Todo.findOneAndDelete({
+        user: user,
+        _id: messageId
+    }).then(result => {
+        res.json({
+            "status": "success",
+            "data": "ja dag he"
+        })
+    }).catch(err => {
+        res.json(err)
+    })
+}
+
 module.exports.getGroup = getGroup;
 module.exports.getAll = getAll;
 module.exports.create = create;
+module.exports.removeMessage = removeMessage;
